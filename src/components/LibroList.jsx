@@ -57,6 +57,10 @@ const LibrosList = () => {
         navigate(`/libros/editar/${codigo}`); // Redirigir al formulario de edición con el código
     };
 
+    const handleSearchPage = () => {
+        navigate('/libros/buscar'); // Redirige al componente de búsqueda combinado
+    };
+
     if (loading) return <p>Cargando libros...</p>;
     if (error) return <p style={{ color: 'red' }}>{error}</p>;
 
@@ -65,6 +69,12 @@ const LibrosList = () => {
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
                 <h2>Lista de Libros</h2>
                 <div>
+                    <button
+                        onClick={handleSearchPage}
+                        style={{ padding: '10px 15px', backgroundColor: '#17a2b8', color: 'white', border: 'none', borderRadius: '4px', cursor: 'pointer', marginRight: '10px' }}
+                    >
+                        Buscar Libro
+                    </button>    
                     <button
                         onClick={handleCreateNew}
                         style={{ padding: '10px 15px', backgroundColor: '#007bff', color: 'white', border: 'none', borderRadius: '4px', cursor: 'pointer', marginRight: '10px' }}
@@ -89,6 +99,7 @@ const LibrosList = () => {
                             <p><strong>Autor:</strong> {libro.autor}</p>
                             <p><strong>Categoría:</strong> {libro.categoria}</p>
                             <p><strong>Año:</strong> {libro.anio}</p>
+                            <p><strong>Numero de paginas:</strong> {libro.numPaginas}</p>
                             <p><strong>Código:</strong> {libro.codigo}</p>
                             <button
                                 onClick={() => handleEdit(libro.codigo)}
