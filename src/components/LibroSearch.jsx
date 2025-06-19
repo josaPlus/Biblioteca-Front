@@ -1,26 +1,26 @@
 import { useState } from "react";
-import { getLibroByCodigo, getLibrosByCategoria, deleteLibro } from "../services/LibroService";
+import { getLibroByCodigo, getLibrosByCategoria, deleteLibro, updateLibro } from "../services/LibroService";
 import { useNavigate } from "react-router-dom";
 
 const LibroSearch = () => {
-    const [searchTerm, setSearchTerm] = useState(''); // Usaremos un solo campo para el término de búsqueda
-    const [searchType, setSearchType] = useState('codigo'); // 'codigo' o 'categoria'
-    const [resultados, setResultados] = useState(null); // Puede ser un solo libro o un array de libros
+    const [searchTerm, setSearchTerm] = useState(''); 
+    const [searchType, setSearchType] = useState('codigo'); 
+    const [resultados, setResultados] = useState(null); 
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
     const navigate = useNavigate();
 
     const handleSearchTypeChange = (e) => {
         setSearchType(e.target.value);
-        setSearchTerm(''); // Limpiar el término de búsqueda al cambiar el tipo
-        setResultados(null); // Limpiar resultados y errores
+        setSearchTerm(''); 
+        setResultados(null); 
         setError('');
     };
 
     const handleChange = (e) => {
         setSearchTerm(e.target.value);
-        setError(''); // Limpiar errores al cambiar el input
-        setResultados(null); // Limpiar resultados
+        setError(''); 
+        setResultados(null); 
     };
 
     const handleDelete = async (codigoLibro) => {
@@ -60,11 +60,11 @@ const LibroSearch = () => {
 
         try {
             if (searchType === 'codigo') {
-                const data = await getLibroByCodigo(searchTerm); // Pasa el código
-                setResultados([data]); // Envuelve el libro individual en un array para un manejo consistente
+                const data = await getLibroByCodigo(searchTerm); 
+                setResultados([data]); 
             } else { 
-                const data = await getLibrosByCategoria(searchTerm); // Pasa la categoría
-                setResultados(data); // Esto ya es un array de libros
+                const data = await getLibrosByCategoria(searchTerm); 
+                setResultados(data); 
             }
         } catch (err) {
             console.error(`Error al buscar libro por ${searchType}:`, err);

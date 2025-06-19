@@ -46,19 +46,19 @@ const LibrosList = () => {
 
     const handleLogout = () => {
         logoutUser();
-        navigate('/'); // Redirigir al login
+        navigate('/'); 
     };
 
     const handleCreateNew = () => {
-        navigate('/libros/crear'); // Redirigir al formulario de creación
+        navigate('/libros/crear'); 
     };
 
     const handleEdit = (codigo) => {
-        navigate(`/libros/editar/${codigo}`); // Redirigir al formulario de edición con el código
+        navigate(`/libros/editar/${codigo}`); 
     };
 
     const handleSearchPage = () => {
-        navigate('/libros/buscar'); // Redirige al componente de búsqueda combinado
+        navigate('/libros/buscar'); 
     };
 
     if (loading) return <p>Cargando libros...</p>;

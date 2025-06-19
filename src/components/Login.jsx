@@ -1,7 +1,6 @@
-// src/components/Login.jsx
 import React, { useState } from 'react';
 import { loginUser } from '../services/auth';
-import { useNavigate } from 'react-router-dom'; // Para redireccionar después del login
+import { useNavigate } from 'react-router-dom';
 
 const Login = ({ onLoginSuccess }) => {
     const [email, setEmail] = useState('');
@@ -11,12 +10,12 @@ const Login = ({ onLoginSuccess }) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        setError(''); // Limpiar errores previos
+        setError(''); 
 
         const success = await loginUser(email, password);
         if (success) {
-            onLoginSuccess(); // Notificar al componente padre que el login fue exitoso
-            navigate('/libros'); // Redirigir a la página de libros
+            onLoginSuccess(); 
+            navigate('/libros'); 
         } else {
             setError('Credenciales inválidas. Por favor, inténtalo de nuevo.');
         }

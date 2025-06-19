@@ -94,28 +94,28 @@ const LibroForm = () => {
             }, 2000);
         } catch (err) {
             console.error('Error al guardar el libro:', err);
-            // --- BLOQUE DE MANEJO DE ERRORES MEJORADO (revisado ligeramente) ---
-            if (err.response && err.response.data) {
-                if (typeof err.response.data.detail === 'string') {
-                    setError(`Error del servidor: ${err.response.data.detail}`);
-                } else if (Array.isArray(err.response.data.detail)) {
-                    const errorMessages = err.response.data.detail.map(e => {
-                        // Concatenar el campo y el mensaje si están disponibles
-                        const loc = e.loc && Array.isArray(e.loc) ? e.loc.join('.') : '';
-                        return `${loc ? loc + ': ' : ''}${e.msg}`;
-                    }).join('; ');
-                    setError(`Errores de validación: ${errorMessages}`);
-                } else if (err.response.data.message) {
-                    setError(`Error: ${err.response.data.message}`);
-                } else {
-                    setError('Error desconocido del servidor. Consulta la consola.');
-                }
-            } else if (err.message) {
-                setError(`Error de conexión: ${err.message}. Asegúrate que el backend está corriendo.`);
-            } else {
-                setError('Ocurrió un error inesperado al procesar la solicitud.');
-            }
-            // --- FIN DEL BLOQUE DE MANEJO DE ERRORES MEJORADO ---
+            // // --- BLOQUE DE MANEJO DE ERRORES MEJORADO (revisado ligeramente) ---
+            // if (err.response && err.response.data) {
+            //     if (typeof err.response.data.detail === 'string') {
+            //         setError(`Error del servidor: ${err.response.data.detail}`);
+            //     } else if (Array.isArray(err.response.data.detail)) {
+            //         const errorMessages = err.response.data.detail.map(e => {
+            //             // Concatenar el campo y el mensaje si están disponibles
+            //             const loc = e.loc && Array.isArray(e.loc) ? e.loc.join('.') : '';
+            //             return `${loc ? loc + ': ' : ''}${e.msg}`;
+            //         }).join('; ');
+            //         setError(`Errores de validación: ${errorMessages}`);
+            //     } else if (err.response.data.message) {
+            //         setError(`Error: ${err.response.data.message}`);
+            //     } else {
+            //         setError('Error desconocido del servidor. Consulta la consola.');
+            //     }
+            // } else if (err.message) {
+            //     setError(`Error de conexión: ${err.message}. Asegúrate que el backend está corriendo.`);
+            // } else {
+            //     setError('Ocurrió un error inesperado al procesar la solicitud.');
+            // }
+            // // --- FIN DEL BLOQUE DE MANEJO DE ERRORES MEJORADO ---
         } finally {
             setLoading(false);
         }

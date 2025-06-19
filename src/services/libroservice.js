@@ -1,5 +1,4 @@
-// src/services/libroService.js
-import api from '../utils/api'; // Importa la instancia de Axios configurada
+import api from '../utils/api'; 
 
 const getLibros = async () => {
     try {
@@ -7,7 +6,7 @@ const getLibros = async () => {
         return response.data;
     } catch (error) {
         console.error('Error al obtener los libros:', error);
-        throw error; // Propagar el error para que el componente lo maneje
+        throw error; 
     }
 };
 
